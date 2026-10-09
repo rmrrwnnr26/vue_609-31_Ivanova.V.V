@@ -1,25 +1,5 @@
 <script setup>
-import { onMounted, ref } from "vue";
-import axios from "axios";
-
-import ProductList from "./components/ProductList.vue";
-
-const items = ref([]);
-const fetchItems = async () => {
-  try {
-    const { data } = await axios.get("https://ba18320673442f34.mokky.dev/items");
-    items.value = data.map((obj) => ({
-      ...obj,
-      isFavorite: false,
-      isAdded: false,
-    }));
-  } catch (e) {
-    console.log(e);
-  }
-};
-onMounted(async () => {
-  await fetchItems();
-});
+import VCatalog from "./components/VCatalog.vue";
 </script>
 
 <template>
@@ -63,8 +43,8 @@ onMounted(async () => {
         </div>
       </nav>
       <main class="pt-10">
-        <h1 class="text-[40px] font-bold mb-5">Каталог</h1>
-        <product-list :items="items"></product-list>
+        <!-- <h1 class="text-[40px] font-bold mb-5">Каталог</h1> -->
+        <v-catalog/>
       </main>
     </div>
     <footer class="p-6 bg-slate-100">
